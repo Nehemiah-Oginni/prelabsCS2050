@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-int findArraySize(int *array)
+void findArraySize(int *array)
 {
     printf("array size is %d\n", array[-1]);
     
