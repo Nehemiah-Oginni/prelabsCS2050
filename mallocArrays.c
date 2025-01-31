@@ -13,7 +13,6 @@ int findArraySize(int *array)
 }
 
 
-
 int main (void)
 {
     int size = (rand() % (1 - 10 + 1)) + 1; // (rand() % (max - min + 1)) + min
