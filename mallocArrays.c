@@ -17,7 +17,7 @@ int findArraySize(int *array)
 int main (void)
 {
     int size = (rand() % (1 - 10 + 1)) + 1; // (rand() % (max - min + 1)) + min
-    int *array = malloc(size * sizeof(int) * sizeof(int));
+    int *array = malloc(size * sizeof(int) + sizeof(int));
     array[0] = size;
     array++;
     for(int i=0; i<size; i++)
@@ -26,4 +26,8 @@ int main (void)
         array[i] = randnum;
     }
     findArraySize(array);
+
+    array--;
+
+    free(array);
 }
