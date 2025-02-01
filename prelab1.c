@@ -34,9 +34,9 @@ int getArrayInfo(int *array, int n, int* minval, int *maxval)// n is the size of
 
         for(int i=0; i<n; i++)
         {
-            for(int j=i+1; j<= n-1; j++)
+            for(int j=i+1; j<= n-1; j++)// checks every part of array and compares to I
             {
-                printf(" array [%d]= %d,  array [%d]= %d\n ", i, array[i], j, array[j]);
+                //printf(" array [%d]= %d,  array [%d]= %d\n ", i, array[i], j, array[j]);
                 if(array[i] == array[j])
                 {
                     break;
@@ -55,10 +55,10 @@ int getArrayInfo(int *array, int n, int* minval, int *maxval)// n is the size of
 
 int main (void)
 {
-    int n = 0;
+    int n = 10;
     int array[n];
-    int min = 20;
-    int max = 30;
+    int min = 0;
+    int max = 0;
     for(int i=0; i<n; i++)
     {
         array[i]=-5;
