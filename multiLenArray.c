@@ -67,5 +67,5 @@ int main (void)
 }   
 void setPetAge(struct petStruct *pet, int age)
 {
-    (*pet).age = age;     
+    //(*pet).age = age;     
 }
