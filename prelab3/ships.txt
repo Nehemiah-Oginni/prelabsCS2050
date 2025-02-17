@@ -1,0 +1,11 @@
+2 1 2 2 3
+Voyager E 9.5
+Pioneer E 8.8
+Galaxy_Freighter C 4.2
+Cosmic_Carrier V 3.9
+Stellar_Hauler M 4.5
+USS_Defiant M 12.1
+Nebula_Medic D 6.3
+Andromeda_Aid D 5.9
+City_Liner V 3.4
+Star_Cruiser V 4.0
