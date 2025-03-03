@@ -34,3 +34,15 @@ int linearSearch(int array[], int value, int n)//goes through array until it fin
     }
     return -1;
 }
+
+int LinkedListLinearSearch(int array[], int value, int n)//goes through array until it finds the wanted value then returns index
+{
+    for(int i=0; i < n; i++)
+    {
+        if(array[i] == value)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
