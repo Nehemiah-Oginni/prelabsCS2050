@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> 
 #include <stdlib.h>
 
 
@@ -14,6 +14,7 @@ int getAtIndex(int, LinkedList*);
 int getLinkedListLength(LinkedList*);
 LinkedList * freeLinkedList(LinkedList*);
 void printback(LinkedList* head);
+void printList(LinkedList *head);
 
 
 int main (void)
@@ -27,28 +28,31 @@ int main (void)
     {
         baby = insertAtHead(i, baby, &ErrorCheck);
     }
-    getAtIndex(10, baby);
+    getAtIndex(5, baby);
+
+    printf("list length issssss %d\n\n", getLinkedListLength(baby));
 
     printback(baby);
+    printList(baby);
 
 }
 
 LinkedList* initializeLinkedList(int* ErrorCheck)
 {
-    LinkedList * list = malloc(sizeof(LinkedList));//allocates space only for one node
-    if(list == NULL)//checking that malloc worked
+    LinkedList * dummy = malloc(sizeof(LinkedList));//allocates space only for one LinkedList
+    if(dummy == NULL)//checking that malloc worked
     {
         *ErrorCheck = 1;
     }
-    list->object = 900;
-    list->next = NULL;// setting the tail
+    dummy->object = 900;
+    dummy->next = NULL;// setting the tail
 
-    LinkedList * dummy = malloc(sizeof(LinkedList));
-    dummy->object = 0;
-    dummy->next = list;
+    // LinkedList * dummy = malloc(sizeof(LinkedList));
+    // dummy->object = 0;
+    // dummy->next = list;
 
 
-    return list;
+    return dummy;
 }
 
 LinkedList* insertAtHead(int object, LinkedList* list, int* ErrorCheck)
@@ -63,32 +67,42 @@ LinkedList* insertAtHead(int object, LinkedList* list, int* ErrorCheck)
     }
     
     head->object = object;
+    if(list->next != NULL)
+    {
+        head->next = list->next;
+    }
+    else
+    {
+        head->next = NULL;
+    }
+    
+    list->next = head;//puts it at front
 
-    head->next = list;//puts it at front
 
-    return head;
+    return list;
 
 }
 
 int getAtIndex(int Index, LinkedList* list)
 {
-    LinkedList* temp = list;
+    LinkedList* temp = list->next;
 
-    for(int i=1; i < Index && temp->next != NULL; i++) //only end of list points to NULL. when i = index, it will return the object :)
+    for(int i=0; i < Index && temp->next != NULL; i++) //only end of list points to NULL. when i = index, it will return the object :)
     {
-       // printf("%d\n", temp->object);
+       
 
         temp = temp->next;//temp = temp next moves through the linked list.
     }
+    printf("%d\n", temp->object);
     return temp->object;
 }
 
 int getLinkedListLength(LinkedList* list)
 {
-    LinkedList* temp = list;
+    LinkedList* temp = list->next;
     int length = 0;
 
-    for(int i=1;temp->next != NULL; i++) //only end of list points to NULL. when i = index, it will return the object :)
+    for(int i=1;temp != NULL; i++) //only end of list points to NULL. when i = index, it will return the object :)
     {
         temp = temp->next;//temp = temp next moves through the linked list.
         length = i;
@@ -102,9 +116,10 @@ LinkedList * freeLinkedList(LinkedList* head)
 
     while(head != NULL)//goes until reaches end (can tell with NULL pointer)
     {
-    headNextHold = head->next;// holds the pointer to next node before freeing 
+    headNextHold = head->next;// holds the pointer to next LinkedList before freeing 
+    //free(head->data);
     free(head);
-    head = headNextHold;// resets head to next node
+    head = headNextHold;// resets head to next LinkedList
     }
     
     return NULL;
@@ -121,3 +136,16 @@ void printback(LinkedList* head)
     printf("%d\n", head->object);
 
 }
+void printList(LinkedList *head)//was told to print in regular order
+{
+    LinkedList * headHold = head;
+
+    while(headHold != NULL)
+    {
+        printf("%d ",headHold->object);//prints data
+        headHold = headHold->next;//moved down the line
+    } 
+    printf("\n");
+}  
+
+// mucsmake 2050 lab6 lab6.c
